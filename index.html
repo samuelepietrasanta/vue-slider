@@ -14,17 +14,30 @@
  
      <!-- Importo VueJs -->
      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>Fatto da solo</title>
+    <title>slider</title>
 </head>
 <body>
     <div id="app" class="container">
-        <div class="row">
-            <div class="col-12" id="images-container">
-                <img :src="images[imageIndex].source" :alt="images[imageIndex].alt">
+        <div class="row ">
+            <div class="col-12 d-flex mb-5">
+                <div class="arrow-container d-flex">
+                    <i class="fas fa-chevron-circle-left" @click='previousDog'></i>
+                </div>
+                <div id="images-container">
+                    <img :src="images[imageIndex].source" :alt="images[imageIndex].alt">
+                </div>
+                <div class="arrow-container d-flex">
+                    <i class="fas fa-chevron-circle-right" @click='nextDog'></i>
+                </div>
+
             </div>
-            <div class="col-12">
+
+            <nav class="text-center">
+                <i class="fas fa-circle " v-for='(image, index) in images' :class=" (index == imageIndex ) ? 'active' : '' " > </i>
+            </nav>
+            <div class="col-12 text-center">
                 <button class="btn btn-primary" @click='previousDog()'>indietro </button>
-                <button class="btn btn-primary" @click='nextDog()'>avanti </button>
+                <button class="btn btn-primary m-5" @click='nextDog()'>avanti </button>
 
             </div>
         </div>
